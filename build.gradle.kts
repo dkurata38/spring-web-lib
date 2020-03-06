@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("idea")
     id("org.springframework.boot") version "2.2.1.RELEASE"
@@ -15,4 +17,11 @@ repositories {
 
 dependencies {
     implementation("org.springframework:spring-webmvc")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "11"
+    }
 }
