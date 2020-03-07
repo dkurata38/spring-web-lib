@@ -16,6 +16,8 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("reflect"))
+    implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework:spring-webmvc")
 }
 
