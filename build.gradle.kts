@@ -2,13 +2,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
-    id("idea")
+    idea
     id("org.springframework.boot") version "2.2.1.RELEASE" apply false
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm") version "1.3.61"
     kotlin("plugin.spring") version "1.3.61"
-    id("java-library")
-    id("maven-publish")
+    `java-library`
+    `maven-publish`
 }
 
 group = "com.github.dkurata38"
@@ -54,7 +54,7 @@ publishing {
         }
     }
     publications {
-        register("gpr", MavenPublication::class) {
+        register("GitHubPackages", MavenPublication::class) {
             from(components["java"])
             artifact(sourcesJar.get())
         }
