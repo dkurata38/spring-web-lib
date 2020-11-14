@@ -41,22 +41,3 @@ val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets.main.get().allSource)
 }
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/dkurata38/maven")
-            credentials {
-                username = (project.findProperty("gpr.user") ?: System.getenv("USERNAME")).toString()
-                password = (project.findProperty("gpr.token") ?: System.getenv("PASSWORD")).toString()
-            }
-        }
-    }
-    publications {
-        register("GitHubPackages", MavenPublication::class) {
-            from(components["java"])
-            artifact(sourcesJar.get())
-        }
-    }
-}
